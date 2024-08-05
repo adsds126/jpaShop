@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
+import jpaBook.jpaShop.domain.Book;
 import jpaBook.jpaShop.domain.Order;
 import jpaBook.jpaShop.domain.OrderItem;
 
@@ -14,13 +15,14 @@ public class JpaMain {
         EntityManager em = emf.createEntityManager();
 
         EntityTransaction tx = em.getTransaction();
-
         tx.begin();
 
         try{
-            Order order = new Order();
-            order.addOrderItem(new OrderItem());
+            Book book = new Book();
+            book.setName("JPA");
+            book.setAuthor("th");
 
+            em.persist(book);
             tx.commit();
         } catch (Exception e){
             tx.rollback();

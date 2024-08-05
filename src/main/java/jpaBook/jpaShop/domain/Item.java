@@ -7,10 +7,10 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Getter
-@Setter
-public class Item {
+@Entity @Getter @Setter
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn
+public class Item extends BaseEntity{
 
     @Id
     @Column(name = "ITEM_ID")
