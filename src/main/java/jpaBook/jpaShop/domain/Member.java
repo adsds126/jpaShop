@@ -21,6 +21,10 @@ public class Member extends BaseEntity{
     @Embedded
     private Address homeaddress;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "TEAM_ID")
+    private Team team;
+
     @ElementCollection
     @CollectionTable(name = "FAVORITE_FOOD",
             joinColumns = @JoinColumn(name = "MEMBER_ID"))
